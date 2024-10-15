@@ -6,6 +6,7 @@ DOMAIN-SUFFIX,ipleak.net
 DOMAIN-SUFFIX,surfshark.com
 DOMAIN-SUFFIX,browserleaks.com
 DOMAIN-SUFFIX,whoer.net
+DOMAIN-SUFFIX,cloudcone.com
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
