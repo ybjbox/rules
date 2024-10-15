@@ -7,6 +7,8 @@ DOMAIN-SUFFIX,surfshark.com
 DOMAIN-SUFFIX,browserleaks.com
 DOMAIN-SUFFIX,whoer.net
 DOMAIN-SUFFIX,cloudcone.com
+DOMAIN-SUFFIX,ipify.org
+DOMAIN-SUFFIX,ip.sb
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
