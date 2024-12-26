@@ -10,6 +10,8 @@ DOMAIN-SUFFIX,whoer.net
 DOMAIN-SUFFIX,cloudcone.com
 DOMAIN-SUFFIX,ipify.org
 DOMAIN-SUFFIX,ip.sb
+DOMAIN-SUFFIX,docker.com
+DOMAIN-SUFFIX,docker.io
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
