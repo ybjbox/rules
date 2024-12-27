@@ -7,6 +7,16 @@ DOMAIN-SUFFIX,lanzov.com
 DOMAIN-SUFFIX,hao123.com
 DOMAIN-SUFFIX,tt.vg
 
+# PT站tracker
+# 域名后缀匹配
+DOMAIN-SUFFIX,icc2022.xyz
+DOMAIN-SUFFIX,czhch.com
+DOMAIN-SUFFIX,icc2022.de
+DOMAIN-SUFFIX,icc2022.com
+DOMAIN-SUFFIX,ptcafe.club
+DOMAIN-SUFFIX,rousi.zip
+
+
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
 
