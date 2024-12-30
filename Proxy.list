@@ -1,5 +1,8 @@
 # 代理补充列表
 
+DOMAIN-SUFFIX,ptcafe.club
+DOMAIN-SUFFIX,rousi.zip
+
 # 域名后缀匹配
 DOMAIN-SUFFIX,tktn.be
 DOMAIN-SUFFIX,v2rayse.com
