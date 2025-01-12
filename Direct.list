@@ -8,13 +8,17 @@ DOMAIN-SUFFIX,hao123.com
 DOMAIN-SUFFIX,tt.vg
 
 # PT站tracker
+
 # 域名后缀匹配
+DOMAIN-SUFFIX,ptcafe.club    # 咖啡
+DOMAIN-SUFFIX,rousi.zip      # rousi
+DOMAIN-SUFFIX,btschool.club  # 校园
+DOMAIN-SUFFIX,ptzone.xyz     # PTzone
+# 冰淇淋
+DOMAIN-SUFFIX,icc2022.com    # 主页
 DOMAIN-SUFFIX,icc2022.xyz
 DOMAIN-SUFFIX,czhch.com
 DOMAIN-SUFFIX,icc2022.de
-DOMAIN-SUFFIX,icc2022.com
-
-
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,baidu
