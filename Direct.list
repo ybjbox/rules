@@ -10,12 +10,16 @@ DOMAIN-SUFFIX,tt.vg
 # PT站tracker
 
 # 域名后缀匹配
-DOMAIN-SUFFIX,ptcafe.club    # 咖啡
-DOMAIN-SUFFIX,rousi.zip      # rousi
-DOMAIN-SUFFIX,btschool.club  # 校园
-DOMAIN-SUFFIX,ptzone.xyz     # PTzone
+# 咖啡
+DOMAIN-SUFFIX,ptcafe.club
+# rousi
+DOMAIN-SUFFIX,rousi.zip
+# 校园
+DOMAIN-SUFFIX,btschool.club
+# PTzone
+DOMAIN-SUFFIX,ptzone.xyz
 # 冰淇淋
-DOMAIN-SUFFIX,icc2022.com    # 主页
+DOMAIN-SUFFIX,icc2022.com
 DOMAIN-SUFFIX,icc2022.xyz
 DOMAIN-SUFFIX,czhch.com
 DOMAIN-SUFFIX,icc2022.de
