@@ -17,6 +17,8 @@ DOMAIN-SUFFIX,ip.sb
 DOMAIN-SUFFIX,docker.com
 DOMAIN-SUFFIX,docker.io
 DOMAIN-SUFFIX,mypikpak.com
+DOMAIN-SUFFIX,nodeseek.com
+DOMAIN-SUFFIX,v2ray-agent.com
 
 # 域名关键字匹配
 DOMAIN-KEYWORD,1e100
