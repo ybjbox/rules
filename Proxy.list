@@ -1,9 +1,7 @@
 # 代理补充列表
 
 # PT站tracker
-# DOMAIN-SUFFIX,ptcafe.club
-# DOMAIN-SUFFIX,rousi.zip
-
+DOMAIN-SUFFIX,icc2022.com
 # 域名后缀匹配
 DOMAIN-SUFFIX,tktn.be
 DOMAIN-SUFFIX,v2rayse.com
