@@ -1,13 +1,26 @@
 
 
 # talkatone 去广告
-DOMAIN-SUFFIX,ads.inmobi.com
+DOMAIN-SUFFIX,a1.tktn.be
+DOMAIN-SUFFIX,adclick.g.doubleclick.net
+DOMAIN-SUFFIX,adrta.com
 DOMAIN-SUFFIX,adsappier.com
+DOMAIN-SUFFIX,ads.inmobi.com
 DOMAIN-SUFFIX,amazon-adsystem.com
 DOMAIN-SUFFIX,appier.net
 DOMAIN-SUFFIX,appiersig.com
+DOMAIN-SUFFIX,as.cluep.com
 DOMAIN-SUFFIX,criteo.com
+DOMAIN-SUFFIX,d.tktn.be
+DOMAIN-SUFFIX,exchange-b-events.inner-active.mobi
 DOMAIN-SUFFIX,googleads.g.doubleclick.net
+DOMAIN-SUFFIX,googleads4.g.doubleclick.net
 DOMAIN-SUFFIX,pubmatic.com
+DOMAIN-SUFFIX,pubnative.net
 DOMAIN-SUFFIX,smaato.net
+DOMAIN-SUFFIX,smadex.com
 DOMAIN-SUFFIX,tappx.com
+DOMAIN-SUFFIX,taboola.com
+DOMAIN-SUFFIX,tr-us.adsmoloco.com
+DOMAIN-SUFFIX,telemetry.sdk.inmobi.cn
+DOMAIN-SUFFIX,wv.inner-active.mobi
