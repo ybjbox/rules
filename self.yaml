@@ -581,7 +581,7 @@ rules:
   - 'RULE-SET,Proxy,国外媒体'
   - 'RULE-SET,ADBlock,广告拦截'
   - 'RULE-SET,AdditionalFilter,广告拦截'
-  - 'RULE-SET,AI,OpenA'
+  - 'RULE-SET,AI,OpenAi'
   - 'RULE-SET,TikTok,国外媒体'
   - "RULE-SET,LocalAreaNetwork,全球直连"
   - "RULE-SET,UnBan,全球直连"
