@@ -219,14 +219,7 @@ proxy-groups:
       - 自动选择
       - 手动切换
       - DIRECT
-  - name: 全球直连
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Direct.png
-    type: select
-    proxies:
-      - 节点选择
-      - 自动选择
-      - 手动切换
-      - DIRECT
+
   - name: 广告拦截
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
     type: select
@@ -349,7 +342,6 @@ proxy-groups:
       - 苹果服务
       - 游戏平台
       - 网易音乐解锁节点
-      - 全球直连
       - 广告拦截
       - 应用净化
       - 漏网之鱼
@@ -715,8 +707,8 @@ rules:
   # ===== 第2优先级：地域和基础路由 =====
   - 'RULE-SET,Direct,国内媒体'
   - 'RULE-SET,Proxy,国外媒体'
-  - "RULE-SET,LocalAreaNetwork,全球直连"
-  - "RULE-SET,UnBan,全球直连"
+  - "RULE-SET,LocalAreaNetwork,DIRECT"
+  - "RULE-SET,UnBan,DIRECT"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
   
@@ -724,8 +716,8 @@ rules:
   - 'RULE-SET,AI,OpenAi'
   - 'RULE-SET,TikTok,国外媒体'
   - "RULE-SET,GoogleFCM,谷歌FCM"
-  - "RULE-SET,GoogleCN,全球直连"
-  - "RULE-SET,SteamCN,全球直连"
+  - "RULE-SET,GoogleCN,DIRECT"
+  - "RULE-SET,SteamCN,DIRECT"
   - "RULE-SET,Bing,微软Bing"
   - "RULE-SET,OneDrive,微软云盘"
   - "RULE-SET,Microsoft,微软服务"
@@ -748,10 +740,10 @@ rules:
   
   # ===== 第5优先级：地理位置规则 =====
   - "RULE-SET,ProxyGFWlist,节点选择"
-  - "RULE-SET,ChinaDomain,全球直连"
-  - "RULE-SET,ChinaCompanyIp,全球直连"
-  - "RULE-SET,Download,全球直连"
-  - "GEOIP,CN,全球直连"  # IP地理位置识别（中国IP直连）
+  - "RULE-SET,ChinaDomain,DIRECT"
+  - "RULE-SET,ChinaCompanyIp,DIRECT"
+  - "RULE-SET,Download,DIRECT"
+  - "GEOIP,CN,DIRECT"  # IP地理位置识别（中国IP直连）
   
   # ===== 默认规则 =====
   - "MATCH,漏网之鱼"  # 不匹配任何规则的流量走这里
