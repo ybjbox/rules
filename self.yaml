@@ -330,6 +330,13 @@ proxy-groups:
       - 韩国节点
 
 rule-providers:
+  Reject:
+    url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Reject.list
+    path: ./ruleset/Reject.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
   Direct:
     url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
     path: ./ruleset/Direct.list
@@ -586,10 +593,11 @@ rule-providers:
     type: http
 
 rules:
-  - 'RULE-SET,Direct,国内媒体'
-  - 'RULE-SET,Proxy,国外媒体'
+  - "RULE-SET,Reject,广告拦截"
   - 'RULE-SET,ADBlock,广告拦截'
   - 'RULE-SET,AdditionalFilter,广告拦截'
+  - 'RULE-SET,Direct,国内媒体'
+  - 'RULE-SET,Proxy,国外媒体'
   - 'RULE-SET,AI,OpenAi'
   - 'RULE-SET,TikTok,国外媒体'
   - "RULE-SET,LocalAreaNetwork,全球直连"
