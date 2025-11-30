@@ -1,4 +1,15 @@
+# ============================================================================
+# 代理组配置 (proxy-groups)
+# 作用：定义流量的路由决策和节点选择策略
+# 分类：
+#   1. 主选择器 - 节点选择、手动切换、自动选择
+#   2. 服务分组 - 按服务类型路由（OpenAI、YouTube等）
+#   3. 区域分组 - 按地理位置过滤节点（美国、香港等）
+#   4. 功能分组 - 广告拦截、应用净化等特殊功能
+# ============================================================================
+
 proxy-groups:
+  # 主选择器 - 全局代理入口
   - name: 节点选择
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
     type: select
@@ -40,6 +51,9 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
+  
+  # ===== 服务分组（按服务类型路由优化） =====
+  # Telegram - 即时通讯
   - name: OpenAi
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bot.png
     type: select
@@ -240,6 +254,9 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
+  
+  # ===== 区域分组（按地理位置过滤节点，type: url-test自动选优） =====
+  # CC节点 - 自建节点
   - name: CC节点
     icon: https://app.cloudcone.com/assets/img/logo.png
     include-all: true
@@ -248,6 +265,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # 美国节点 - 美国地区
   - name: 美国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
     include-all: true
@@ -256,6 +275,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # 新加坡节点 - 东南亚地区
   - name: 新加坡节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
     include-all: true
@@ -264,6 +285,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # 香港节点 - 香港地区
   - name: 香港节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
     include-all: true
@@ -272,6 +295,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # 日本节点 - 日本地区
   - name: 日本节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
     include-all: true
@@ -280,6 +305,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # 台湾节点 - 台湾地区
   - name: 台湾节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
     include-all: true
@@ -288,6 +315,8 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # 韩国节点 - 韩国地区
   - name: 韩国节点
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Korea.png
     include-all: true
@@ -296,6 +325,9 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
+  
+  # ===== 汇总分组 =====
+  # GLOBAL - 汇总所有代理组供用户全局切换
   - name: GLOBAL
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
@@ -329,7 +361,20 @@ proxy-groups:
       - 台湾节点
       - 韩国节点
 
+# ============================================================================
+# 规则提供者配置 (rule-providers)
+# 作用：定义远程规则列表，自动更新，用于流量匹配和路由
+# 分类：
+#   1. 基础规则 - 拒绝、直连、代理的基础列表
+#   2. 广告过滤 - ADBlock、BanAD等拦截规则
+#   3. 服务规则 - 特定服务优化（OpenAI、Netflix等）
+#   4. 地域规则 - 按国家和地区分类（中国域名、代理媒体等）
+# 说明：interval: 86400 = 24小时更新一次
+# ============================================================================
+
 rule-providers:
+  # ===== 基础规则 =====
+  # 自定义拒绝规则 - 广告、恶意软件、追踪器等黑名单
   Reject:
     url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Reject.list
     path: ./ruleset/Reject.list
@@ -337,6 +382,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # 自定义国内直连规则 - 国内网站和服务直连，无需代理
   Direct:
     url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
     path: ./ruleset/Direct.list
@@ -344,6 +390,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # 自定义国外代理规则 - 国外网站和被墙服务，必须通过代理访问
   Proxy:
     url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Proxy.list
     path: ./ruleset/Proxy.list
@@ -351,6 +398,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # 局域网规则 - 本地网络地址直连（192.168.x.x等）
   LocalAreaNetwork:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
     path: ./ruleset/LocalAreaNetwork.list
@@ -358,6 +406,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 解除限制规则 - 被错误拦截的正常网站白名单
   UnBan:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/UnBan.list
     path: ./ruleset/UnBan.list
@@ -365,6 +415,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # ===== 广告过滤规则 =====
+  # 广告过滤 - 拦截网页广告
   BanAD:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanAD.list
     path: ./ruleset/BanAD.list
@@ -372,6 +424,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 应用广告过滤 - 拦截App内广告和推送
   BanProgramAD:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/BanProgramAD.list
     path: ./ruleset/BanProgramAD.list
@@ -379,6 +433,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 域名广告过滤 - 基于域名的广告拦截
   ADBlock:
     url: 'https://adrules.top/adrules_domainset.txt'
     path: ./ruleset/ADBlock.txt
@@ -386,6 +442,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # ===== 服务规则（AI和通讯）=====
+  # AI服务规则 - ChatGPT、Claude、Gemini等AI工具
   AI:
     url: 'https://ruleset.skk.moe/Clash/non_ip/ai.txt'
     path: ./ruleset/AI.txt
@@ -393,14 +451,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  AdditionalFilter:
-    url: >-
-      https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/AdditionalFilter.list
-    path: ./ruleset/AdditionalFilter.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
+  # TikTok规则 - TikTok国际版（抖音国际）
   TikTok:
     url: >-
       https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/TikTok.list
@@ -409,6 +460,19 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 附加过滤 - 屏蔽 TikTok Mod 烦人的更新提示
+  AdditionalFilter:
+    url: >-
+      https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/AdditionalFilter.list
+    path: ./ruleset/AdditionalFilter.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+  
+  # ===== 服务规则（Google和微软）=====
+  # Google推送规则 - Gmail、Google Drive等同步推送
   GoogleFCM:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/GoogleFCM.list
     path: ./ruleset/GoogleFCM.list
@@ -416,6 +480,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # Google国内版规则 - Google在中国的官方服务
   GoogleCN:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/GoogleCN.list
     path: ./ruleset/GoogleCN.list
@@ -423,6 +488,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Steam国内版规则 - Steam中国服务
   SteamCN:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/SteamCN.list
     path: ./ruleset/SteamCN.list
@@ -430,6 +497,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Bing搜索规则 - 微软搜索引擎
   Bing:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Bing.list
     path: ./ruleset/Bing.list
@@ -437,6 +506,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # OneDrive规则 - 微软云存储
   OneDrive:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/OneDrive.list
     path: ./ruleset/OneDrive.list
@@ -444,6 +515,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 微软服务规则 - Office365、Azure等微软全系列
   Microsoft:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Microsoft.list
     path: ./ruleset/Microsoft.list
@@ -451,6 +524,9 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # ===== 服务规则（Apple）=====
+  # Apple服务规则 - iCloud、AppStore、Apple Music等
   Apple:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Apple.list
     path: ./ruleset/Apple.list
@@ -458,6 +534,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # ===== 服务规则（通讯和社交）=====
+  # Telegram规则 - Telegram即时通讯
   Telegram:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Telegram.list
     path: ./ruleset/Telegram.list
@@ -465,6 +543,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # OpenAI规则 - ChatGPT、OpenAI API等
   OpenAi:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/OpenAi.list
     path: ./ruleset/OpenAi.list
@@ -472,6 +552,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # ===== 服务规则（流媒体和游戏）=====
+  # 网易音乐规则 - 网易音乐版权限制解除
   NetEaseMusic:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/NetEaseMusic.list
     path: ./ruleset/NetEaseMusic.list
@@ -479,6 +561,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Epic游戏平台规则
   Epic:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Epic.list
     path: ./ruleset/Epic.list
@@ -486,6 +570,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Origin游戏平台规则 - EA官方游戏平台
   Origin:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Origin.list
     path: ./ruleset/Origin.list
@@ -493,6 +579,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # PlayStation平台规则
   Sony:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Sony.list
     path: ./ruleset/Sony.list
@@ -500,6 +588,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Steam游戏平台规则
   Steam:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Steam.list
     path: ./ruleset/Steam.list
@@ -507,6 +597,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Nintendo游戏平台规则
   Nintendo:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Nintendo.list
     path: ./ruleset/Nintendo.list
@@ -514,6 +606,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  # YouTube视频规则
   YouTube:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/YouTube.list
     path: ./ruleset/YouTube.list
@@ -521,6 +614,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # Netflix影视流媒体规则
   Netflix:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Netflix.list
     path: ./ruleset/Netflix.list
@@ -528,13 +623,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  Bahamut:
-    url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bahamut.list
-    path: ./ruleset/Bahamut.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
+  # B站港澳台规则 - 哔哩哔哩国际版和港澳台服务
   BilibiliHMT:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/BilibiliHMT.list
     path: ./ruleset/BilibiliHMT.list
@@ -542,6 +631,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # B站国内版规则 - 哔哩哔哩主站
   Bilibili:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Ruleset/Bilibili.list
     path: ./ruleset/Bilibili.list
@@ -549,6 +640,9 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # ===== 地域规则 =====
+  # 国内媒体规则 - 国内视频和媒体网站
   ChinaMedia:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaMedia.list
     path: ./ruleset/ChinaMedia.list
@@ -556,6 +650,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 国外媒体规则 - 国外视频和媒体网站（Netflix、YouTube等）
   ProxyMedia:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyMedia.list
     path: ./ruleset/ProxyMedia.list
@@ -563,6 +659,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # GFW列表规则 - 被墙域名列表（基于gfwlist）
   ProxyGFWlist:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ProxyGFWlist.list
     path: ./ruleset/ProxyGFWlist.list
@@ -570,6 +668,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 国内域名规则 - 基于域名识别国内网站（domain类型）
   ChinaDomain:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaDomain.list
     path: ./ruleset/ChinaDomain.list
@@ -577,6 +677,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 国内IP规则 - 中国公司的IP地址段（ipcidr类型）
   ChinaCompanyIp:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/ChinaCompanyIp.list
     path: ./ruleset/ChinaCompanyIp.list
@@ -584,6 +686,8 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+  
+  # 下载服务规则 - 多线程下载优化
   Download:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/Download.list
     path: ./ruleset/Download.list
@@ -592,18 +696,33 @@ rule-providers:
     format: text
     type: http
 
+# ============================================================================
+# 路由规则配置 (rules)
+# 作用：定义域名/IP与代理组的匹配关系，按优先级从上到下执行
+# 规则类型：
+#   RULE-SET: 使用规则提供者
+#   GEOIP: 基于IP地理位置
+#   MATCH: 默认规则（必须在最后）
+# 执行顺序很重要：优先级高的规则放在前面
+# ============================================================================
+
 rules:
+  # ===== 第1优先级：拒绝/广告拦截 =====
   - "RULE-SET,Reject,广告拦截"
   - 'RULE-SET,ADBlock,广告拦截'
   - 'RULE-SET,AdditionalFilter,广告拦截'
+  
+  # ===== 第2优先级：地域和基础路由 =====
   - 'RULE-SET,Direct,国内媒体'
   - 'RULE-SET,Proxy,国外媒体'
-  - 'RULE-SET,AI,OpenAi'
-  - 'RULE-SET,TikTok,国外媒体'
   - "RULE-SET,LocalAreaNetwork,全球直连"
   - "RULE-SET,UnBan,全球直连"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
+  
+  # ===== 第3优先级：服务路由 =====
+  - 'RULE-SET,AI,OpenAi'
+  - 'RULE-SET,TikTok,国外媒体'
   - "RULE-SET,GoogleFCM,谷歌FCM"
   - "RULE-SET,GoogleCN,全球直连"
   - "RULE-SET,SteamCN,全球直连"
@@ -623,26 +742,40 @@ rules:
   - "RULE-SET,Netflix,国外媒体"
   - "RULE-SET,BilibiliHMT,哔哩哔哩"
   - "RULE-SET,Bilibili,哔哩哔哩"
+  # ===== 第4优先级：媒体分类 =====
   - "RULE-SET,ChinaMedia,国内媒体"
   - "RULE-SET,ProxyMedia,国外媒体"
+  
+  # ===== 第5优先级：地理位置规则 =====
   - "RULE-SET,ProxyGFWlist,节点选择"
   - "RULE-SET,ChinaDomain,全球直连"
   - "RULE-SET,ChinaCompanyIp,全球直连"
   - "RULE-SET,Download,全球直连"
-  - "GEOIP,CN,全球直连"
-  - "MATCH,漏网之鱼"
+  - "GEOIP,CN,全球直连"  # IP地理位置识别（中国IP直连）
+  
+  # ===== 默认规则 =====
+  - "MATCH,漏网之鱼"  # 不匹配任何规则的流量走这里
+# ============================================================================
+# 流量嗅探配置 (sniffer)
+# 作用：识别加密流量中的域名，提高路由精准度
+# 协议支持：
+#   - TLS: HTTPS和其他TLS加密流量
+#   - HTTP: 明文HTTP流量
+#   - QUIC: QUIC/HTTP3流量
+# ============================================================================
+
 sniffer:
   sniff:
-    TLS:
+    TLS:  # HTTPS加密流量嗅探
       ports:
         - 443
         - 8443
-    HTTP:
+    HTTP:  # HTTP明文流量嗅探
       ports:
         - 80
         - 8080
         - 8880
-    QUIC:
+    QUIC:  # QUIC/HTTP3流量嗅探
       ports:
         - 443
         - 8443
@@ -684,9 +817,28 @@ dns:
   fake-ip-filter:
     - geosite:cn  # 国内域名（识别库）
     - '+.local'   # 本地域名
+
+# ============================================================================
+# 地理数据配置 (geodata-mode & geox-url)
+# 作用：启用地理IP/域名识别功能，用于GEOIP和geosite规则匹配
+# 说明：
+#   geodata-mode: true  - 启用增强的地理位置识别
+#   geox-url - 定义地理数据源的下载地址
+# ============================================================================
+
+# 地理数据模式 - 启用后支持更精准的地理位置识别
 geodata-mode: true
+
+# 地理数据源配置 - 定义IP和域名地理库的下载地址
 geox-url:
+  # geoip - IP地址库，用于识别IP所属国家/地区（GEOIP规则匹配）
   geoip: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
+  
+  # geosite - 域名库，用于识别域名所属服务和地区（geosite规则匹配）
   geosite: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat'
+  
+  # mmdb - MaxMind IP数据库，另一种IP地理位置识别方式
   mmdb: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb'
+  
+  # asn - AS号码数据库，用于识别IP所属的自治系统和ISP
   asn: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb'
