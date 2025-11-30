@@ -237,9 +237,9 @@ proxy-groups:
       - 韩国节点
       - 手动切换
   - name: CC节点
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    icon: https://app.cloudcone.com/assets/img/logo.png
     include-all: true
-    filter: (?i)^CC
+    filter: (?i)^CC-
     filter-deleted: "无节点"
     type: url-test
     interval: 300
@@ -292,7 +292,7 @@ proxy-groups:
     type: url-test
     interval: 300
     tolerance: 50
-  - name: GLOBAL
+  - name: 全局模式
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
     include-all: true
     type: select
