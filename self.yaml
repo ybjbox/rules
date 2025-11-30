@@ -84,7 +84,7 @@ proxy-groups:
       - 韩国节点
       - 手动切换
       - DIRECT
-  - name: 油管视频
+  - name: YouTube
     icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
     type: select
     proxies:
@@ -341,12 +341,12 @@ proxy-groups:
       - 自动选择
       - 电报消息
       - OpenAi
-      - 油管视频
+      - 微软Bing
+      - YouTube
       - 哔哩哔哩
       - 国外媒体
       - 国内媒体
       - 谷歌FCM
-      - 微软Bing
       - 微软云盘
       - 微软服务
       - 苹果服务
@@ -740,7 +740,7 @@ rules:
   - "RULE-SET,Sony,游戏平台"
   - "RULE-SET,Steam,游戏平台"
   - "RULE-SET,Nintendo,游戏平台"
-  - "RULE-SET,YouTube,油管视频"
+  - "RULE-SET,YouTube,YouTube"
   - "RULE-SET,Netflix,国外媒体"
   - "RULE-SET,BilibiliHMT,哔哩哔哩"
   - "RULE-SET,Bilibili,哔哩哔哩"
