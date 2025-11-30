@@ -658,22 +658,32 @@ dns:
   ipv6: false
   prefer-h3: true
   enhanced-mode: fake-ip
+  
+  # 系统级备用DNS - 用于Clash初始化和规则列表更新（快速本地解析）
   default-nameserver:
-    - 119.29.29.29
-    - 223.5.5.5
+    - 119.29.29.29  # 腾讯DNS
+    - 223.5.5.5     # 阿里DNS
+  
+  # 主DNS - 用户流量优先查询（国外DNS，加密无污染）
   nameserver:
-    - 223.5.5.5
-    - 119.29.29.29
-    - 180.184.1.1
+    - 'tls://dns.cloudflare.com'        # Cloudflare TLS
+    - 'https://dns.cloudflare.com/dns-query'  # Cloudflare HTTPS
+    - 'tls://dot.pub'                   # dot.pub国外DNS
+  
+  # 备用DNS - 主DNS超时时回退（国内DNS，保证备用）
   fallback:
-    - 'quic://dns0.eu'
-    - 'https://dns.cloudflare.com/dns-query'
-    - 'https://dns.sb/dns-query'
-    - 'tcp://208.67.222.222'
-    - 'tcp://8.26.56.2'
+    - 119.29.29.29  # 腾讯DNS
+    - 223.5.5.5     # 阿里DNS
+  
+  # 代理服务器DNS - 解析代理节点IP
   proxy-server-nameserver:
-    - 'quic://223.5.5.5'
-    - 'tls://dot.pub'
+    - 'tls://dns.cloudflare.com'  # 国外DNS
+    - 'quic://223.5.5.5'          # 国内DNS备用
+  
+  # Fake-IP过滤 - 这些域名不使用虚拟IP，直接解析真实IP
+  fake-ip-filter:
+    - geosite:cn  # 国内域名（识别库）
+    - '+.local'   # 本地域名
 geodata-mode: true
 geox-url:
   geoip: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
