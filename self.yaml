@@ -780,10 +780,6 @@ sniffer:
         - 80
         - 8080
         - 8880
-    QUIC:  # QUIC/HTTP3流量嗅探
-      ports:
-        - 443
-        - 8443
   override-destination: false
   enable: true
   force-dns-mapping: true
@@ -794,7 +790,7 @@ sniffer:
 dns:
   enable: true
   ipv6: false
-  prefer-h3: true
+  prefer-h3: false
   enhanced-mode: fake-ip
   
   # 系统级备用DNS - 用于Clash初始化和规则列表更新（快速本地解析）
