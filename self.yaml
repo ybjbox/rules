@@ -806,7 +806,6 @@ dns:
   nameserver:
     - 'tls://dns.cloudflare.com'        # Cloudflare TLS
     - 'https://dns.cloudflare.com/dns-query'  # Cloudflare HTTPS
-    - 'tls://dot.pub'                   # dot.pub国外DNS
   
   # 备用DNS - 主DNS超时时回退（国内DNS，保证备用）
   fallback:
