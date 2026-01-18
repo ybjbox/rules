@@ -384,14 +384,7 @@ rule-providers:
     interval: 86400
     format: text
     type: http
-  # 自定义国内直连规则 - 国内网站和服务直连，无需代理
-  Direct:
-    url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
-    path: ./ruleset/Direct.list
-    behavior: classical
-    interval: 86400
-    format: text
-    type: http
+
   # 自定义国外代理规则 - 国外网站和被墙服务，必须通过代理访问
   Proxy:
     url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Proxy.list
@@ -400,6 +393,16 @@ rule-providers:
     interval: 86400
     format: text
     type: http
+
+  # 自定义国内直连规则 - 国内网站和服务直连，无需代理
+  Direct:
+    url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
+    path: ./ruleset/Direct.list
+    behavior: classical
+    interval: 86400
+    format: text
+    type: http
+
   # 局域网规则 - 本地网络地址直连（192.168.x.x等）
   LocalAreaNetwork:
     url: https://testingcf.jsdelivr.net/gh/ACL4SSR/ACL4SSR@master/Clash/LocalAreaNetwork.list
