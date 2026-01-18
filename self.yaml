@@ -718,9 +718,9 @@ rules:
   - 'RULE-SET,AdditionalFilter,广告拦截'
   
   # ===== 第2优先级：地域和基础路由 =====
+  - "RULE-SET,LocalAreaNetwork,DIRECT"
   - 'RULE-SET,Direct,国内媒体'
   - 'RULE-SET,Proxy,国外媒体'
-  - "RULE-SET,LocalAreaNetwork,DIRECT"
   - "RULE-SET,UnBan,DIRECT"
   - "RULE-SET,BanAD,广告拦截"
   - "RULE-SET,BanProgramAD,应用净化"
@@ -756,7 +756,7 @@ rules:
   - "RULE-SET,ChinaDomain,DIRECT"
   - "RULE-SET,ChinaCompanyIp,DIRECT"
   - "RULE-SET,Download,DIRECT"
-  - "GEOIP,CN,DIRECT"  # IP地理位置识别（中国IP直连）
+  - "GEOIP,CN,DIRECT,no-resolve"  # IP地理位置识别（中国IP直连）
   
   # ===== 默认规则 =====
   - "MATCH,漏网之鱼"  # 不匹配任何规则的流量走这里
