@@ -397,7 +397,6 @@ rule-providers:
   # 自定义国内直连规则 - 国内网站和服务直连，无需代理
   Direct:
     url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
-    https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
     path: ./ruleset/Direct.list
     behavior: classical
     interval: 86400
