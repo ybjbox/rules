@@ -378,7 +378,7 @@ rule-providers:
   # ===== 基础规则 =====
   # 自定义拒绝规则 - 广告、恶意软件、追踪器等黑名单
   Reject:
-    url: https://testingcf.jsdelivr.net/gh/ybjbox/rules@main/Reject.list
+    url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Reject.list
     path: ./ruleset/Reject.list
     behavior: classical
     interval: 86400
@@ -387,7 +387,7 @@ rule-providers:
 
   # 自定义国外代理规则 - 国外网站和被墙服务，必须通过代理访问
   Proxy:
-    url: https://testingcf.jsdelivr.net/gh/ybjbox/rules@main/Proxy.list
+    url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Proxy.list
     path: ./ruleset/Proxy.list
     behavior: classical
     interval: 86400
@@ -396,7 +396,8 @@ rule-providers:
 
   # 自定义国内直连规则 - 国内网站和服务直连，无需代理
   Direct:
-    url: https://testingcf.jsdelivr.net/gh/ybjbox/rules@main/Direct.list
+    url: https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
+    https://raw.githubusercontent.com/ybjbox/rules/refs/heads/main/Direct.list
     path: ./ruleset/Direct.list
     behavior: classical
     interval: 86400
