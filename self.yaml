@@ -52,8 +52,8 @@ dns:
   
   # 代理服务器DNS - 解析代理节点IP
   proxy-server-nameserver:
-    - system
-    - 223.5.5.5
+    - 'tls://dns.cloudflare.com'  # 国外DNS
+    - 'quic://223.5.5.5'          # 国内DNS备用
   
   # Fake-IP过滤 - 这些域名不使用虚拟IP，直接解析真实IP
   fake-ip-filter:
