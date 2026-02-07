@@ -1,4 +1,92 @@
 # ============================================================================
+# 流量嗅探配置 (sniffer)
+# 作用：识别加密流量中的域名，提高路由精准度
+# 协议支持：
+#   - TLS: HTTPS和其他TLS加密流量
+#   - HTTP: 明文HTTP流量
+#   - QUIC: QUIC/HTTP3流量
+# ============================================================================
+
+sniffer:
+  sniff:
+    TLS:  # HTTPS加密流量嗅探
+      ports:
+        - 443
+        - 8443
+    HTTP:  # HTTP明文流量嗅探
+      ports:
+        - 80
+        - 8080
+        - 8880
+    QUIC:
+      ports: 
+        - 443
+        - 8443
+  override-destination: false
+  enable: true
+  force-dns-mapping: true
+  skip-domain:
+    - Mijia Cloud
+    - dlg.io.mi.com
+    - +.push.apple.com
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: true
+  enhanced-mode: fake-ip
+  
+  # 系统级备用DNS - 用于Clash初始化和规则列表更新（快速本地解析）
+  default-nameserver:
+    - 119.29.29.29  # 腾讯DNS
+    - 223.5.5.5     # 阿里DNS
+  
+  # 主DNS - 用户流量优先查询（国外DNS，加密无污染）
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+  
+  # 备用DNS - 主DNS超时时回退（国内DNS，保证备用）
+  fallback:
+    - 119.29.29.29  # 腾讯DNS
+    - 223.5.5.5     # 阿里DNS
+  
+  # 代理服务器DNS - 解析代理节点IP
+  proxy-server-nameserver:
+    - system
+    - 223.5.5.5
+  
+  # Fake-IP过滤 - 这些域名不使用虚拟IP，直接解析真实IP
+  fake-ip-filter:
+    - geosite:cn  # 国内域名（识别库）
+    - '+.local'   # 本地域名
+    - '+.lan'
+    - '+.home'
+
+# ============================================================================
+# 地理数据配置 (geodata-mode & geox-url)
+# 作用：启用地理IP/域名识别功能，用于GEOIP和geosite规则匹配
+# 说明：
+#   geodata-mode: true  - 启用增强的地理位置识别
+#   geox-url - 定义地理数据源的下载地址
+# ============================================================================
+
+# 地理数据模式 - 启用后支持更精准的地理位置识别
+geodata-mode: true
+
+# 地理数据源配置 - 定义IP和域名地理库的下载地址
+geox-url:
+  # geoip - IP地址库，用于识别IP所属国家/地区（GEOIP规则匹配）
+  geoip: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
+  
+  # geosite - 域名库，用于识别域名所属服务和地区（geosite规则匹配）
+  geosite: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat'
+  
+  # mmdb - MaxMind IP数据库，另一种IP地理位置识别方式
+  mmdb: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb'
+  
+  # asn - AS号码数据库，用于识别IP所属的自治系统和ISP
+  asn: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb'
+# ============================================================================
 # 代理组配置 (proxy-groups)
 # 作用：定义流量的路由决策和节点选择策略
 # 分类：
@@ -760,91 +848,4 @@ rules:
   
   # ===== 默认规则 =====
   - "MATCH,漏网之鱼"  # 不匹配任何规则的流量走这里
-# ============================================================================
-# 流量嗅探配置 (sniffer)
-# 作用：识别加密流量中的域名，提高路由精准度
-# 协议支持：
-#   - TLS: HTTPS和其他TLS加密流量
-#   - HTTP: 明文HTTP流量
-#   - QUIC: QUIC/HTTP3流量
-# ============================================================================
 
-sniffer:
-  sniff:
-    TLS:  # HTTPS加密流量嗅探
-      ports:
-        - 443
-        - 8443
-    HTTP:  # HTTP明文流量嗅探
-      ports:
-        - 80
-        - 8080
-        - 8880
-    QUIC:
-      ports: 
-        - 443
-        - 8443
-  override-destination: false
-  enable: true
-  force-dns-mapping: true
-  skip-domain:
-    - Mijia Cloud
-    - dlg.io.mi.com
-    - +.push.apple.com
-dns:
-  enable: true
-  ipv6: false
-  prefer-h3: true
-  enhanced-mode: fake-ip
-  
-  # 系统级备用DNS - 用于Clash初始化和规则列表更新（快速本地解析）
-  default-nameserver:
-    - 119.29.29.29  # 腾讯DNS
-    - 223.5.5.5     # 阿里DNS
-  
-  # 主DNS - 用户流量优先查询（国外DNS，加密无污染）
-  nameserver:
-    - https://dns.alidns.com/dns-query
-    - https://doh.pub/dns-query
-  
-  # 备用DNS - 主DNS超时时回退（国内DNS，保证备用）
-  fallback:
-    - 119.29.29.29  # 腾讯DNS
-    - 223.5.5.5     # 阿里DNS
-  
-  # 代理服务器DNS - 解析代理节点IP
-  proxy-server-nameserver:
-    - system
-    - 223.5.5.5
-  
-  # Fake-IP过滤 - 这些域名不使用虚拟IP，直接解析真实IP
-  fake-ip-filter:
-    - geosite:cn  # 国内域名（识别库）
-    - '+.local'   # 本地域名
-    - '+.lan'
-    - '+.home'
-
-# ============================================================================
-# 地理数据配置 (geodata-mode & geox-url)
-# 作用：启用地理IP/域名识别功能，用于GEOIP和geosite规则匹配
-# 说明：
-#   geodata-mode: true  - 启用增强的地理位置识别
-#   geox-url - 定义地理数据源的下载地址
-# ============================================================================
-
-# 地理数据模式 - 启用后支持更精准的地理位置识别
-geodata-mode: true
-
-# 地理数据源配置 - 定义IP和域名地理库的下载地址
-geox-url:
-  # geoip - IP地址库，用于识别IP所属国家/地区（GEOIP规则匹配）
-  geoip: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
-  
-  # geosite - 域名库，用于识别域名所属服务和地区（geosite规则匹配）
-  geosite: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat'
-  
-  # mmdb - MaxMind IP数据库，另一种IP地理位置识别方式
-  mmdb: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb'
-  
-  # asn - AS号码数据库，用于识别IP所属的自治系统和ISP
-  asn: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb'
