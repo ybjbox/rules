@@ -780,6 +780,10 @@ sniffer:
         - 80
         - 8080
         - 8880
+    QUIC:
+      ports: 
+        - 443
+        - 8443
   override-destination: false
   enable: true
   force-dns-mapping: true
@@ -790,7 +794,7 @@ sniffer:
 dns:
   enable: true
   ipv6: false
-  prefer-h3: false
+  prefer-h3: true
   enhanced-mode: fake-ip
   
   # 系统级备用DNS - 用于Clash初始化和规则列表更新（快速本地解析）
@@ -800,8 +804,8 @@ dns:
   
   # 主DNS - 用户流量优先查询（国外DNS，加密无污染）
   nameserver:
-    - 'tls://dns.cloudflare.com'        # Cloudflare TLS
-    - 'https://dns.cloudflare.com/dns-query'  # Cloudflare HTTPS
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
   
   # 备用DNS - 主DNS超时时回退（国内DNS，保证备用）
   fallback:
@@ -810,8 +814,8 @@ dns:
   
   # 代理服务器DNS - 解析代理节点IP
   proxy-server-nameserver:
-    - 'tls://dns.cloudflare.com'  # 国外DNS
-    - 'quic://223.5.5.5'          # 国内DNS备用
+    - system
+    - 223.5.5.5
   
   # Fake-IP过滤 - 这些域名不使用虚拟IP，直接解析真实IP
   fake-ip-filter:
