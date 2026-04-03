@@ -76,16 +76,16 @@ geodata-mode: true
 # 地理数据源配置 - 定义IP和域名地理库的下载地址
 geox-url:
   # geoip - IP地址库，用于识别IP所属国家/地区（GEOIP规则匹配）
-  geoip: 'https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
+  geoip: 'https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat'
   
   # geosite - 域名库，用于识别域名所属服务和地区（geosite规则匹配）
-  geosite: 'https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat'
+  geosite: 'https://testingcf.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat'
   
   # mmdb - MaxMind IP数据库，另一种IP地理位置识别方式
-  mmdb: 'https://fastly.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb'
+  mmdb: 'https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb'
   
   # asn - AS号码数据库，用于识别IP所属的自治系统和ISP
-  asn: 'https://fastly.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb'
+  asn: 'https://testingcf.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb'
 # ============================================================================
 # 代理组配置 (proxy-groups)
 # 作用：定义流量的路由决策和节点选择策略
