@@ -49,6 +49,13 @@ dns:
   fallback:
     - 'https://cloudflare-dns.com/dns-query'
     - 'https://dns.google/dns-query'
+    
+# 回退过滤器 - 防污染的核心逻辑开关（必须有这个，fallback才会生效！）
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
   
   # 代理服务器DNS - 解析代理节点IP
   proxy-server-nameserver:
