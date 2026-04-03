@@ -45,10 +45,10 @@ dns:
     - https://dns.alidns.com/dns-query
     - https://doh.pub/dns-query
   
-  # 备用DNS - 主DNS超时时回退（国内DNS，保证备用）
+# 备用DNS - 用于解析海外域名，防止GFW DNS污染（必须填海外加密DNS！）
   fallback:
-    - 119.29.29.29  # 腾讯DNS
-    - 223.5.5.5     # 阿里DNS
+    - 'https://cloudflare-dns.com/dns-query'
+    - 'https://dns.google/dns-query'
   
   # 代理服务器DNS - 解析代理节点IP
   proxy-server-nameserver:
