@@ -16,8 +16,8 @@ DOMAIN-SUFFIX,hao123.com
 DOMAIN-SUFFIX,tt.vg
 DOMAIN-SUFFIX,openwrt.ai
 DOMAIN-SUFFIX,403333.xyz
-DOMAIN-SUFFIX,claw.cloud
-DOMAIN-SUFFIX,clawcloudrun.com
+# DOMAIN-SUFFIX,claw.cloud
+# DOMAIN-SUFFIX,clawcloudrun.com
 # PT站
 
 # 域名后缀匹配
